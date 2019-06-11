@@ -3,7 +3,7 @@
 if( !defined( 'ABSPATH' )  )
 	exit();
 
-Class Dude_Img_Hashfeed_Activator extends Dude_Img_Hashfeed {
+Class Dude_Img_Userfeed_Activator extends Dude_Img_Userfeed {
 
 	private static $_instance = null;
 
@@ -24,15 +24,15 @@ Class Dude_Img_Hashfeed_Activator extends Dude_Img_Hashfeed {
 	public function add_schedule( $schedules ) {
 		$schedules['five-minute'] = array(
 			'interval'	=> 300,
-			'display'		=> __( 'Once every 5 mins', 'dude-img-hashfeed' )
+			'display'		=> __( 'Once every 5 mins', 'dude-img-userfeed' )
 		);
 
 		return $schedules;
 	} // end function add_schedule
 
 	private function activate() {
-		if( !wp_next_scheduled ( 'dude_img_hashfeed_fetch' ) ) {
-			wp_schedule_event( time(), apply_filters( 'dude_img_hashfeed_fetch_recurrence', 'five-minute' ), 'dude_img_hashfeed_fetch' );
+		if( !wp_next_scheduled ( 'dude_img_userfeed_fetch' ) ) {
+			wp_schedule_event( time(), apply_filters( 'dude_img_userfeed_fetch_recurrence', 'five-minute' ), 'dude_img_userfeed_fetch' );
     }
 	} // end function activate
-} // end class Dude_Img_Hashfeed_Activator
+} // end class Dude_Img_Userfeed_Activator

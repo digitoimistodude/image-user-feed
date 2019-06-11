@@ -3,7 +3,7 @@
 if( !defined( 'ABSPATH' )  )
 	exit();
 
-Class Dude_Img_Hashfeed_Get_From_Cache extends Dude_Img_Hashfeed {
+Class Dude_Img_Userfeed_Get_From_Cache extends Dude_Img_Userfeed {
 
 	private static $_instance = null;
 
@@ -15,26 +15,26 @@ Class Dude_Img_Hashfeed_Get_From_Cache extends Dude_Img_Hashfeed {
 		return self::$_instance;
 	} // end function instance
 
-	public static function get_raw( $hashtag = null ) {
-    if ( empty( $hashtag ) ) {
-      $settings = get_option( 'dude-img-hashfeed' );
-      $hashtag = strtolower( $settings['hashtags'] );
+	public static function get_raw( $username = null ) {
+    if ( empty( $username ) ) {
+      $settings = get_option( 'dude-img-userfeed' );
+      $username = strtolower( $settings['username'] );
     }
 
-    $count = apply_filters( 'dude_img_hashfeed_insta_count', 10 );
-    $count = apply_filters( "dude_img_hashfeed_insta_count_{$hashtag}", $count );
+    $count = apply_filters( 'dude_img_userfeed_insta_count', 10 );
+    $count = apply_filters( "dude_img_userfeed_insta_count_{$username}", $count );
 
-		$insta = get_transient( "dude_hashfeed_insta_{$hashtag}|{$count}" );
+		$insta = get_transient( "dude_userfeed_insta_{$username}|{$count}" );
 
 	  if ( ! $insta ) {
-	    $insta = Dude_Img_Hashfeed_Fetch_Instagram::do_fetch( $hashtag );
+	    $insta = Dude_Img_Userfeed_Fetch_Instagram::do_fetch( $username );
 	  }
 
 		return $insta;
 	} // end function get_raw
 
-	public static function get_thumbnails( $hashtag = null ) {
-		$images = self::get_raw( $hashtag );
+	public static function get_thumbnails( $username = null ) {
+		$images = self::get_raw( $username );
 
 		ob_start();
 
@@ -44,4 +44,4 @@ Class Dude_Img_Hashfeed_Get_From_Cache extends Dude_Img_Hashfeed {
 
 		return ob_get_clean();
 	} // end function get_thumbnails
-} // end class Dude_Img_Hashfeed_Get_From_Cache
+} // end class Dude_Img_Userfeed_Get_From_Cache

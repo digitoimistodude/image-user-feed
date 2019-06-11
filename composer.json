@@ -1,11 +1,11 @@
 {
-  "name": "digitoimistodude/image-hashtag-feed",
+  "name": "digitoimistodude/image-user-feed",
   "type": "wordpress-plugin",
-  "description": "WordPress plugin to get Instagram hashtag feeds working again by bypassing the API.",
-  "homepage": "https://github.com/digitoimistodude/image-hashtag-feed",
+  "description": "WordPress plugin to get Instagram user feeds by bypassing the API.",
+  "homepage": "https://github.com/digitoimistodude/image-user-feed",
   "keywords": ["wordpress", "plugin", "instagram"],
   "license": "gplv2",
-  "version": "2.1.1",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Timi Wahalahti",

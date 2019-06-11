@@ -1,24 +1,22 @@
 <?php
 /**
  *
- * Plugin Name:       Image hashtag feed
- * Plugin URI:        https://github.com/digitoimistodude/image-hashtag-feed
- * Description:       Get Instagram hashtag feeds working again by bypassing the API.
- * Version:           2.1.1
+ * Plugin Name:       Image user feed
+ * Plugin URI:        https://github.com/digitoimistodude/image-username-feed
+ * Description:       Get Instagram user feeds by bypassing the API.
+ * Version:           1.0.0
  * Author:            Digitoimisto Dude Oy, Timi Wahalahti
  * Author URI:        https://www.dude.fi
- * GitHub Plugin URI: digitoimistodude/image-hashtag-feed
+ * GitHub Plugin URI: digitoimistodude/image-username-feed
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       dude-img-hashfeed
- * Domain Path:       /languages
  */
 
 if( !defined( 'ABSPATH' )  )
 	exit();
 
 
-Class Dude_Img_Hashfeed {
+Class Dude_Img_Userfeed {
 
   private static $_instance = null;
   protected $plugin_path;
@@ -27,17 +25,16 @@ Class Dude_Img_Hashfeed {
     $this->plugin_path = plugin_dir_path( __FILE__ );
 
     add_action( 'init', array( $this, 'load_depencies' ) );
-    add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-		add_action( 'init', array( 'Dude_Img_Hashfeed_Admin_Settings_Page', 'instance' ) );
-		add_action( 'init', array( 'Dude_Img_Hashfeed_Fetch_Instagram', 'instance' ) );
+		add_action( 'init', array( 'Dude_Img_Userfeed_Admin_Settings_Page', 'instance' ) );
+		add_action( 'init', array( 'Dude_Img_Userfeed_Fetch_Instagram', 'instance' ) );
   } // end function __construct
 
   public function __clone () {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'dude-img-hashfeed' ) );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'dude-img-userfeed' ) );
 	} // end function __clone
 
   public function __wakeup() {
-    _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'dude-img-hashfeed' ) );
+    _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'dude-img-userfeed' ) );
   } // end function __wakeup
 
   public static function instance() {
@@ -48,34 +45,30 @@ Class Dude_Img_Hashfeed {
     return self::$_instance;
   } // end function instance
 
-  public function load_plugin_textdomain() {
-    load_plugin_textdomain( 'dude-img-hashfeed', false, $this->plugin_path.'/languages/' );
-  } // end function load_plugin_textdomain
-
   public function load_depencies() {
     require_once( $this->plugin_path.'/libraries/simple-admin-pages/simple-admin-pages.php' );
 		require_once( $this->plugin_path.'/includes/admin/settings-page.php' );
 		require_once( $this->plugin_path.'/includes/fetch-instagram.php' );
 		require_once( $this->plugin_path.'/includes/get-from-cache.php' );
   } // end function load_depencies
-} // end class Dude_Img_Hashfeed
+} // end class Dude_Img_Userfeed
 
-$plugin = new Dude_Img_Hashfeed();
+$plugin = new Dude_Img_Userfeed();
 
-if( !function_exists( 'get_the_dude_img_hashfeed_raw' ) ) {
-	function get_the_dude_img_hashfeed_raw( $hashtag = null ) {
-		return Dude_Img_Hashfeed_Get_From_Cache::get_raw( $hashtag );
-	} // end function dude_img_hashfeed_get_raw
+if( !function_exists( 'get_the_dude_img_userfeed_raw' ) ) {
+	function get_the_dude_img_userfeed_raw( $username = null ) {
+		return Dude_Img_Userfeed_Get_From_Cache::get_raw( $username );
+	} // end function dude_img_userfeed_get_raw
 }
 
-if( !function_exists( 'get_the_dude_img_hashfeed_thumbnails' ) ) {
-	function get_the_dude_img_hashfeed_thumbnails( $hashtag = null ) {
-		return Dude_Img_Hashfeed_Get_From_Cache::get_thumbnails( $hashtag );
-	} // end function dude_img_hashfeed_thumbnails
+if( !function_exists( 'get_the_dude_img_userfeed_thumbnails' ) ) {
+	function get_the_dude_img_userfeed_thumbnails( $username = null ) {
+		return Dude_Img_Userfeed_Get_From_Cache::get_thumbnails( $username );
+	} // end function dude_img_userfeed_thumbnails
 }
 
-if( !function_exists( 'the_dude_img_hashfeed_thumbnails' ) ) {
-	function the_dude_img_hashfeed_thumbnails( $hashtag = null ) {
-		echo Dude_Img_Hashfeed_Get_From_Cache::get_thumbnails( $hashtag );
-	} // end function dude_img_hashfeed_thumbnails
+if( !function_exists( 'the_dude_img_userfeed_thumbnails' ) ) {
+	function the_dude_img_userfeed_thumbnails( $username = null ) {
+		echo Dude_Img_Userfeed_Get_From_Cache::get_thumbnails( $username );
+	} // end function dude_img_userfeed_thumbnails
 }

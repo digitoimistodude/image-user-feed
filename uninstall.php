@@ -4,4 +4,4 @@
 if( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit;
 
-delete_transient( 'dude_img_hashfeed_insta' );
+delete_transient( 'dude_img_userfeed_insta' );

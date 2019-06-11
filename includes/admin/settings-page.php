@@ -3,7 +3,7 @@
 if( !defined( 'ABSPATH' )  )
 	exit();
 
-Class Dude_Img_Hashfeed_Admin_Settings_Page extends Dude_Img_Hashfeed {
+Class Dude_Img_Userfeed_Admin_Settings_Page extends Dude_Img_Userfeed {
 
 	private static $_instance = null;
 
@@ -30,44 +30,44 @@ Class Dude_Img_Hashfeed_Admin_Settings_Page extends Dude_Img_Hashfeed {
     $sap->add_page(
       'options',
       array(
-        'id'            => 'dude-img-hashfeed',
-        'title'         => __( 'Image hashtag feed', 'dude-img-hashfeed' ),
-        'menu_title'    => __( 'Image hashtag feed', 'dude-img-hashfeed' ),
+        'id'            => 'dude-img-userfeed',
+        'title'         => __( 'Image username feed', 'dude-img-userfeed' ),
+        'menu_title'    => __( 'Image username feed', 'dude-img-userfeed' ),
         'capability'    => 'manage_options'
       )
     );
 
     $sap->add_section(
-      'dude-img-hashfeed',
+      'dude-img-userfeed',
       array(
-        'id'            => 'dude-img-hashfeed-settings',
-        'description'   => __( 'Images are stored to transient in favor of caching and reducing page load time. Cache time is five minutes<br />and after that new images are fetched from Instagram when images are needed again.', 'dude-img-hashfeed' ).'<br /><br />'.__( 'For now, this plugin supports only one hashtag.' )
+        'id'            => 'dude-img-userfeed-settings',
+        'description'   => __( 'Images are stored to transient in favor of caching and reducing page load time. Cache time is five minutes<br />and after that new images are fetched from Instagram when images are needed again.', 'dude-img-userfeed' ),
     	)
     );
 
     $sap->add_setting(
-      'dude-img-hashfeed',
-      'dude-img-hashfeed-settings',
+      'dude-img-userfeed',
+      'dude-img-userfeed-settings',
       'text',
       array(
-        'id'            => 'hashtags',
-        'title'         => __( 'Hashtag', 'dude-img-hashfeed' ),
-        'description'   => __( 'Type hashtag without hash at the beginning. You can also set this dynamically from the functions.', 'dude-img-hashfeed' ),
+        'id'            => 'username',
+        'title'         => __( 'Username', 'dude-img-userfeed' ),
+        'description'   => __( 'You can also set this dynamically from the functions.', 'dude-img-userfeed' ),
       )
     );
 
 		$sap->add_setting(
-      'dude-img-hashfeed',
-      'dude-img-hashfeed-settings',
+      'dude-img-userfeed',
+      'dude-img-userfeed-settings',
       'text',
       array(
         'id'            => 'last_fetch_insta',
-        'title'         => __( 'Last fetch was made', 'dude-img-hashfeed' ),
+        'title'         => __( 'Last fetch was made', 'dude-img-userfeed' ),
       )
     );
 
-    $sap = apply_filters( 'dude_img_hashfeed_setup_settings_page', $sap );
+    $sap = apply_filters( 'dude_img_userfeed_setup_settings_page', $sap );
 
     $sap->add_admin_menus();
 	} // end function setup_settings_page()
-} // end class Dude_Img_Hashfeed_Admin_Settings_Page
+} // end class Dude_Img_Userfeed_Admin_Settings_Page
