@@ -1,0 +1,16 @@
+{
+  "name": "digitoimistodude/image-user-feed",
+  "type": "wordpress-plugin",
+  "description": "WordPress plugin to get Instagram user feeds working again by bypassing the API.",
+  "homepage": "https://github.com/digitoimistodude/image-user-feed",
+  "keywords": ["wordpress", "plugin", "instagram"],
+  "license": "gplv2",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Timi Wahalahti",
+      "email": "timi@dude.fi",
+      "homepage": "https://www.dude.fi"
+    }
+  ]
+}
