@@ -1,3 +1,6 @@
+| :bangbang: | **This repository is no longer actively maintained. The plugin still works, but does not receive any further updates other than community contributed fixes.**  |
+|:------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 # Image username feed
 WordPress plugin to get Instagram username feeds working again by bypassing the API. Handcafted with love at [Digitoimisto Dude Oy](http://dude.fi), a Finnish boutique digital agency in the center of Jyväskylä.
 
