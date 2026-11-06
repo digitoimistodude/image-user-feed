@@ -32,7 +32,7 @@ Class Dude_Img_User_Feed_Fetch_Instagram extends Dude_Img_User_Feed {
 		$url = "https://www.instagram.com/{$username}/?__a=1";
    	$output = json_decode( file_get_contents( $url ) );
 
-    $insta = $output->graphql->user->edge_owner_to_timeline_media->edges;
+    $insta = $output->graphql->user->edge_owner_to_timeline_media->edges ?? null;
 
 		if ( empty( $insta ) ) {
 			set_transient( "dude_userfeed_insta_{$username}|{$count}", $insta, apply_filters( 'dude_img_userfeed_insta_transient_lifetime', 5 * MINUTE_IN_SECONDS ) );
